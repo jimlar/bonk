@@ -1,0 +1,35 @@
+#
+# TODO for Bonk
+# Jimmy Larsson 1998
+#
+
+
+ALL:
+* Do page setup i C-code instead, asm is too crappy to read
+
+
+BOOT:
+
+
+
+KERNEL:
+* Clean up interrupt handling (replace stack, push regs etc., maybe with TSS)
+* Implement and test a system call.
+* Memory management (in kernel or not?)
+
+
+INTERRUPTS/EXCEPTIONS:
+* Own TSS and TSS-descriptor in GDT for each hardware interrrupt
+* Reserve own stack for each of them, and only use 'automatic' variables.
+  (This will give reentrant code)
+* Each TSS will only point to a stub and calls the master interrupt decode 
+  function, this function will send a signal to the device driver that has registered
+  the handler or call the handler directly (don't know yet)
+
+
+
+
+Steps:
+1. Implement a system call and test.
+2. Run a task in separate address space.
+

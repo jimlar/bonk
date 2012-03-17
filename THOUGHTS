@@ -1,0 +1,16 @@
+
+
+
+System calls:
+
+Caller  (user side API)          --->    kernel                 --->   driver
+		                  |                              |
+converts address of syscall-      | retrieves message            | performs call, then
+message to physical and pushes it | and checks who is            | sends reply by calling
+then does int SYSCALL_VECTOR.     | registered to that           | "reply" in driver API,
+Listen for relpy and blocks.      | call, then delivers message  | this pushes an physical
+                                  | and iret's                   | message address and does
+ 				  |                              | int SEND_MESSAGE_VECTOR
+
+
+
